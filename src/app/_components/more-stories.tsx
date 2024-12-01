@@ -39,8 +39,8 @@ export function MoreStories({ posts }: Props) {
 					</CardContent>
 					<CardFooter>
 						<Link
-							as={`/posts/${post.slug}`}
-							href="/posts/[slug]"
+							as={`/nieuws/${post.slug}`}
+							href="/nieuws/[slug]"
 							className="hover:underline"
 						>
 							<Button>Lees meer</Button>

@@ -4,7 +4,7 @@ media:
   categories: ["image"]
 content:
   - name: posts
-    label: Posts
+    label: Nieuws
     type: collection
     path: _posts
     view:
@@ -32,7 +32,7 @@ content:
           - { name: url, label: URL, type: image }
       - { name: body, label: Body, type: rich-text }
   - name: fotoAlbum
-    label: FotoAlbum
+    label: Foto Album
     type: collection
     path: _foto-album
     view:
@@ -41,3 +41,25 @@ content:
       - { name: title, label: Title, type: string, required: true }
       - { name: url, label: Url, type: string, required: true }
       - { name: coverImage, label: Cover image, type: image }
+      - {
+          name: date,
+          label: Date,
+          type: date,
+          options: { time: true, format: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" },
+        }
+  - name: sponsors
+    label: Sponsors
+    type: collection
+    path: _sponsors
+    view:
+      fields: [title, url]
+    fields:
+      - { name: name, label: Title, type: string, required: true }
+      - { name: siteUrl, label: Site Url, type: string, required: true }
+      - { name: logo, label: Logo image, type: image, required: true }
+      - {
+          name: date,
+          label: Date,
+          type: date,
+          options: { time: true, format: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" },
+        }

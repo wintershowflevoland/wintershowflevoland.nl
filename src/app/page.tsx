@@ -3,11 +3,13 @@ import AanmeldButton from "@/components/aanmeldButton";
 import FotoAlbum from "@/components/fotoAlbum";
 import SponsorCard from "@/components/sponsorCard";
 import { Card } from "@/components/ui/card";
-import { getAllPosts } from "@/lib/api";
+import { getAllFotoAlbums, getAllPosts, getAllSponsors } from "@/lib/api";
 import { MoreStories } from "./_components/more-stories";
 
 export default function Home() {
 	const allPosts = getAllPosts();
+	const allSponsors = getAllSponsors();
+	const allFotoAlbums = getAllFotoAlbums();
 	return (
 		<div>
 			{/* top of page */}
@@ -83,29 +85,17 @@ export default function Home() {
 						Sponsoren:
 					</h2>
 					<div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+						{allSponsors.map((sponsor) => (
+							<SponsorCard
+								key={sponsor.slug}
+								img={sponsor.logo}
+								title={sponsor.name}
+								url={sponsor.siteUrl}
+							/>
+						))}
 						<SponsorCard
 							img={"./assets/site/logo-icon.jpeg"}
-							title={"Sponsor Naam"}
-							url={"https://google.com"}
-						/>
-						<SponsorCard
-							img={"./assets/site/logo-icon-transparant.png"}
-							title={"Sponsor Naam"}
-							url={"https://google.com"}
-						/>
-						<SponsorCard
-							img={"./assets/site/logo-icon.jpeg"}
-							title={"Sponsor Naam"}
-							url={"https://google.com"}
-						/>
-						<SponsorCard
-							img={"./assets/site/logo-icon-transparant.png"}
-							title={"Sponsor Naam"}
-							url={"https://google.com"}
-						/>
-						<SponsorCard
-							img={"./assets/site/logo-icon.jpeg"}
-							title={"Sponsor Naam"}
+							title={"Static  Sponor"}
 							url={"https://google.com"}
 						/>
 					</div>
@@ -117,12 +107,13 @@ export default function Home() {
 						Fotos:
 					</h2>
 					<div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-						<FotoAlbum
-							albumTitle={"2024"}
-							albumUrl={
-								"https://cilia-hoekman-fotografie.pixellu.gallery/wintershow-flevoland-2024/all?fbclid=IwY2xjawG4pXZleHRuA2FlbQIxMAABHbWZVbpIfWZWG_QpOyyTloCDlvn38FUBJINMIci6OKIoCaHxJHfNjeodiA_aem_HcAKffwYKCOAOoxpcOm5gw"
-							}
-						/>
+						{allFotoAlbums.map((album) => (
+							<FotoAlbum
+								key={album.slug}
+								albumTitle={album.title}
+								albumUrl={album.url}
+							/>
+						))}
 					</div>
 				</div>
 			</div>
