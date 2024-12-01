@@ -1,30 +1,138 @@
-import Container from "@/app/_components/container";
-import { HeroPost } from "@/app/_components/hero-post";
-import { Intro } from "@/app/_components/intro";
-import { MoreStories } from "@/app/_components/more-stories";
-import { getAllPosts } from "../lib/api";
+/* eslint-disable @next/next/no-img-element */
+import AanmeldButton from "@/components/aanmeldButton";
+import FotoAlbum from "@/components/fotoAlbum";
+import SponsorCard from "@/components/sponsorCard";
+import { Card } from "@/components/ui/card";
+import { getAllPosts } from "@/lib/api";
+import { MoreStories } from "./_components/more-stories";
 
-export default function Index() {
-  const allPosts = getAllPosts();
+export default function Home() {
+	const allPosts = getAllPosts();
+	return (
+		<div>
+			{/* top of page */}
+			<div>
+				<img
+					src="./assets/site/header-picture.jpg"
+					className="block object-cover w-full h-[25vh] md:h-[40vh] grayscale z-0"
+					alt=""
+				/>
+				<div className="-translate-y-1/2">
+					<Card className="w-[90vw] lg:w-[70vw] h-fit md:h-[20vh] mx-auto overflow-hidden bg-transparent border-transparent grid sm:grid-cols-2 ">
+						<div className="h-full w-full hidden sm:block">
+							<img
+								src="./assets/site/header-card-picture.jpg"
+								className="md:w-[70vw] h-ful md:h-[20vh] block object-cover w-full"
+								alt=""
+							/>
+						</div>
+						<div className="bg-card p-4">
+							<h1 className="text-lg sm:text-2xl font-bold">
+								Wintershow Keuring 4 maart.
+							</h1>
+							<p className="text-sm">
+								De voorbereidingen voor de Wintershow Dronten zijn al in volle
+								gang! Daarmee is de datum voor aankomend jaar bekend en kan je
+								je daar voor aanmelden.
+							</p>
+							<br />
+							<AanmeldButton />
+						</div>
+					</Card>
+				</div>
+			</div>
+			{/* content */}
+			<div className="w-[90vw] lg:w-[70vw] mx-auto grid grid-flow-row gap-8">
+				{/* Fotos */}
+				<div>
+					<h2 className="text-2xl font-bold pb-2" id="fotos">
+						Nieuws:
+					</h2>
+					{allPosts.length > 0 && <MoreStories posts={allPosts} />}
+				</div>
+				{/* About us */}
+				<div>
+					<h2 className="text-2xl font-bold pb-2" id="over-ons">
+						Over Ons
+					</h2>
+					<div className="flex grid-cols-2 gap-4">
+						<Card className="bg-card p-4 grow">
+							<h2 className="text-lg font-bold">
+								Wat is Wintershow Flevoland?
+							</h2>
+							<p className="text-sm">
+								Lorem ipsum dolor sit amet consectetur adipisicing elit.
+								Eligendi, unde perspiciatis tempore perferendis commodi repellat
+								minima aspernatur modi cumque! Inventore nisi consectetur saepe
+								quis doloremque. Excepturi magni possimus recusandae neque?
+							</p>
+						</Card>
+						<div>
+							<img
+								src="./assets/site/logo.jpeg"
+								className=" min-w-32  sm:min-w-44 lg:min-w-64 max-h-96 rounded-lg"
+								alt=""
+							/>
+						</div>
+					</div>
+				</div>
 
-  const heroPost = allPosts[0];
+				{/* Sponsors */}
+				<div>
+					<h2 className="text-2xl font-bold pb-2" id="sponsoren">
+						Sponsoren:
+					</h2>
+					<div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+						<SponsorCard
+							img={"./assets/site/logo-icon.jpeg"}
+							title={"Sponsor Naam"}
+							url={"https://google.com"}
+						/>
+						<SponsorCard
+							img={"./assets/site/logo-icon-transparant.png"}
+							title={"Sponsor Naam"}
+							url={"https://google.com"}
+						/>
+						<SponsorCard
+							img={"./assets/site/logo-icon.jpeg"}
+							title={"Sponsor Naam"}
+							url={"https://google.com"}
+						/>
+						<SponsorCard
+							img={"./assets/site/logo-icon-transparant.png"}
+							title={"Sponsor Naam"}
+							url={"https://google.com"}
+						/>
+						<SponsorCard
+							img={"./assets/site/logo-icon.jpeg"}
+							title={"Sponsor Naam"}
+							url={"https://google.com"}
+						/>
+					</div>
+				</div>
 
-  const morePosts = allPosts.slice(1);
+				{/* Fotos */}
+				<div>
+					<h2 className="text-2xl font-bold pb-2" id="fotos">
+						Fotos:
+					</h2>
+					<div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+						<FotoAlbum
+							albumTitle={"2024"}
+							albumUrl={
+								"https://cilia-hoekman-fotografie.pixellu.gallery/wintershow-flevoland-2024/all?fbclid=IwY2xjawG4pXZleHRuA2FlbQIxMAABHbWZVbpIfWZWG_QpOyyTloCDlvn38FUBJINMIci6OKIoCaHxJHfNjeodiA_aem_HcAKffwYKCOAOoxpcOm5gw"
+							}
+						/>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+}
 
-  return (
-    <main>
-      <Container>
-        <Intro />
-        <HeroPost
-          title={heroPost.title}
-          coverImage={heroPost.coverImage}
-          date={heroPost.date}
-          author={heroPost.author}
-          slug={heroPost.slug}
-          excerpt={heroPost.excerpt}
-        />
-        {morePosts.length > 0 && <MoreStories posts={morePosts} />}
-      </Container>
-    </main>
-  );
+{
+	/* <FacebookAlbumEmbed
+					albumTitle={"test 1"}
+					albumId={"a.149890187626098"}
+				/> */
 }
