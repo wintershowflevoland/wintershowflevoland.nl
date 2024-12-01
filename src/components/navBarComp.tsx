@@ -44,7 +44,7 @@ export function NavBarComp() {
 			<div className="flex gap-2 md:gap-4 items-center">
 				<Link href="/">
 					<img
-						src="./assets/site/logo-icon-transparant.png"
+						src="/assets/site/logo-icon-transparant.png"
 						alt="logo"
 						className="h-[36px] w-[36px]"
 					/>

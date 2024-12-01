@@ -15,7 +15,7 @@ export default function Home() {
 			{/* top of page */}
 			<div>
 				<img
-					src="./assets/site/header-picture.jpg"
+					src="/assets/site/header-picture.jpg"
 					className="block object-cover w-full h-[25vh] md:h-[40vh] grayscale z-0"
 					alt=""
 				/>
@@ -23,7 +23,7 @@ export default function Home() {
 					<Card className="w-[90vw] lg:w-[70vw] h-fit md:h-[20vh] mx-auto overflow-hidden bg-transparent border-transparent grid sm:grid-cols-2 ">
 						<div className="h-full w-full hidden sm:block">
 							<img
-								src="./assets/site/header-card-picture.jpg"
+								src="/assets/site/header-card-picture.jpg"
 								className="md:w-[70vw] h-ful md:h-[20vh] block object-cover w-full"
 								alt=""
 							/>
@@ -71,7 +71,7 @@ export default function Home() {
 						</Card>
 						<div>
 							<img
-								src="./assets/site/logo.jpeg"
+								src="/assets/site/logo.jpeg"
 								className=" min-w-32  sm:min-w-44 lg:min-w-64 max-h-96 rounded-lg"
 								alt=""
 							/>
@@ -94,7 +94,7 @@ export default function Home() {
 							/>
 						))}
 						<SponsorCard
-							img={"./assets/site/logo-icon.jpeg"}
+							img={"/assets/site/logo-icon.jpeg"}
 							title={"Static  Sponor"}
 							url={"https://google.com"}
 						/>

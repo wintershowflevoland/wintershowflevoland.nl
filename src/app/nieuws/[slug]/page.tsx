@@ -3,7 +3,6 @@ import { getAllPosts, getPostBySlug } from "../../../lib/api";
 import markdownToHtml from "../../../lib/markdownToHtml";
 import Alert from "../../_components/alert";
 import Container from "../../_components/container";
-import Header from "../../_components/header";
 import { PostBody } from "../../_components/post-body";
 import { PostHeader } from "../../_components/post-header";
 
@@ -18,11 +17,11 @@ export default async function Nieuws({ params }: Params) {
 	const content = await markdownToHtml(post.content || "");
 
 	return (
-		<main>
+		<div>
 			<Alert preview={post.preview} />
 			<Container>
-				<Header />
-				<article className="mb-32">
+				{/* <Header /> */}
+				<article className="my-32">
 					<PostHeader
 						title={post.title}
 						coverImage={post.coverImage}
@@ -32,7 +31,7 @@ export default async function Nieuws({ params }: Params) {
 					<PostBody content={content} />
 				</article>
 			</Container>
-		</main>
+		</div>
 	);
 }
 
