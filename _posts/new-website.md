@@ -1,7 +1,7 @@
 ---
 title: Website WinterShow Flevoland
 excerpt: Welkom op de Website van WinterShow Flevoland.
-coverImage: /assets/blog/dynamic-routing/cover.jpg
+coverImage: /assets/site/header-picture.jpg
 date: 2024-12-Su'T'15:17:00.000'+01:00'
 author:
   name: Organizatie
