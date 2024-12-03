@@ -20,7 +20,6 @@ export function FooterComp() {
 				<div>
 					<p className=" font-semibold">Locatie:</p>
 					<p>Hippisch Centrum Flevodrome</p>
-					<br />
 					<p>Wisentweg 9a</p>
 					<p>8251 PB Dronten</p>
 					<p>Nederland</p>

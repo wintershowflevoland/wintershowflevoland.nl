@@ -219,6 +219,15 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 						</Select>
 					</div>
 					<div className="grid gap-2">
+						<Label htmlFor="name">Naam Dierenartspraktijk</Label>
+						<Input
+							type="text"
+							id="name"
+							placeholder="Praktijk naam"
+							onChange={(e) => setName(e.target.value)}
+						/>
+					</div>
+					<div className="grid gap-2">
 						<Label htmlFor="name">Deelname bedrijfsgroep</Label>
 						<Select onValueChange={(e) => setGroup(e)}>
 							<SelectTrigger>
@@ -255,7 +264,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 				<div>
 					<div className="grid gap-2">
 						<Label htmlFor="aantalKoeien">
-							Aantal Opgegeven Koeien: {cowList.length}
+							Aantal Opgegeven Dieren: {cowList.length}
 						</Label>
 						<hr />
 						<div className="grid grid-flow-col gap-2 overflow-x-scroll">
@@ -282,7 +291,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 						/>
 					</div>
 					<div className="grid gap-2">
-						<Label htmlFor="cowNumber">Leef Nummer</Label>
+						<Label htmlFor="cowNumber">Levensnummer</Label>
 						<Input
 							type="string"
 							id="cowNumber"
@@ -315,6 +324,36 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 							id="calvedCount"
 							value={calvedCount}
 							onChange={(e) => setCalvedCount(e.target.value)}
+						/>
+					</div>
+					<div className="grid gap-2">
+						<Label htmlFor="name">Soort rund.</Label>
+						<Select onValueChange={(e) => setBvd(e)}>
+							<SelectTrigger>
+								<SelectValue placeholder="Selecteer antwoord" />
+							</SelectTrigger>
+							<SelectContent>
+								<SelectItem value="1">Koe</SelectItem>
+								<SelectItem value="0">Pink</SelectItem>
+							</SelectContent>
+						</Select>
+					</div>
+					<div className="grid gap-2">
+						<Label htmlFor="cowName">Naam Begeleider</Label>
+						<Input
+							type="string"
+							id="cowName"
+							value={cowName}
+							onChange={(e) => setCowName(e.target.value)}
+						/>
+					</div>
+					<div className="grid gap-2">
+						<Label htmlFor="calfDate">Leeftijd Begeleider</Label>
+						<Input
+							type="number"
+							id="calfDate"
+							value={calfDate}
+							onChange={(e) => setCalfDate(e.target.value)}
 						/>
 					</div>
 					<div className="grid gap-2">
