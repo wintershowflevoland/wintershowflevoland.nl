@@ -40,6 +40,7 @@ export function FooterComp() {
 					>
 						FaceBook
 					</Link>
+					<br />
 					<Link
 						href="https://instagram.com/wintershowflevoland/"
 						className="hover:underline"
