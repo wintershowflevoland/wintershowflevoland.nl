@@ -16,12 +16,14 @@ export function FooterComp() {
 					<p className=" font-semibold">Contact:</p>
 					<p>Wintershow Flevoland</p>
 					<p> Email: info@wintershowflevoland.nl </p>
-					<p>Telefoon: 06-12345678</p>
 				</div>
 				<div>
 					<p className=" font-semibold">Locatie:</p>
-					<p>Dronten</p>
-					<p>Dronten</p>
+					<p>Hippisch Centrum Flevodrome</p>
+					<br />
+					<p>Wisentweg 9a</p>
+					<p>8251 PB Dronten</p>
+					<p>Nederland</p>
 				</div>
 				<div>
 					<p className=" font-semibold">Links:</p>
@@ -31,18 +33,25 @@ export function FooterComp() {
 					>
 						Aanmelden
 					</p>
+
 					<Link
 						href="https://www.facebook.com/profile.php?id=100078153516204"
 						className="hover:underline"
 					>
 						FaceBook
 					</Link>
+					<Link
+						href="https://instagram.com/wintershowflevoland/"
+						className="hover:underline"
+					>
+						Instagram
+					</Link>
 				</div>
 			</div>
 			<div className="sm:flex">
 				<div>© {new Date().getFullYear()} Wintershow Flevoland</div>
-				<div className="grow" />
-				<div>KVK : 00000000 | IBAN: 0ss0s0s0s0000s</div>
+				{/* <div className="grow" />
+				<div>KVK : 00000000 | IBAN: 0ss0s0s0s0000s</div> */}
 			</div>
 		</footer>
 	);
