@@ -30,7 +30,7 @@ export default function Home() {
 						</div>
 						<div className="bg-card p-4">
 							<h1 className="text-lg sm:text-2xl font-bold">
-								Wintershow Keuring 2025 4 maart.
+								Wintershow Keuring 4 maart 2025.
 							</h1>
 							<p className="text-sm">
 								De voorbereidingen voor de Wintershow Dronten zijn al in volle
