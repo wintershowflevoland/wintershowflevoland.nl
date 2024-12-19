@@ -31,6 +31,7 @@ import { useMediaQuery } from "@/hooks/use-media-query";
 import { cn } from "@/lib/utils";
 import { useEffect, useRef } from "react";
 import { Checkbox } from "./ui/checkbox";
+import { Textarea } from "./ui/textarea";
 
 export function AanmeldDialog() {
 	const [open, setOpen] = React.useState(false);
@@ -126,7 +127,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 		React.useState(false);
 	const [termsCRV, setTermsCRV] = React.useState(false);
 
-	const [openPageId, setOpenPageId] = React.useState(2);
+	const [openPageId, setOpenPageId] = React.useState(0);
 
 	const dialogFormRef = useRef<HTMLFormElement>(null);
 
@@ -135,6 +136,16 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 			dialogFormRef.current.scrollTo({ top: 0, behavior: "smooth" });
 		}
 	}, [openPageId]);
+
+	useEffect(() => {
+		if (bvd == "Koe") {
+			setHelperName("-");
+			setHelperAge("-");
+		} else {
+			setHelperName("");
+			setHelperAge("");
+		}
+	}, [bvd]);
 
 	return (
 		<form
@@ -439,12 +450,12 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 								<SelectValue placeholder="Selecteer antwoord" />
 							</SelectTrigger>
 							<SelectContent>
-								<SelectItem value="1">Koe</SelectItem>
-								<SelectItem value="0">Pink</SelectItem>
+								<SelectItem value="Koe">Koe</SelectItem>
+								<SelectItem value="Pink">Pink</SelectItem>
 							</SelectContent>
 						</Select>
 					</div>
-					<div className="grid gap-2">
+					<div className={bvd == "Koe" ? "hidden" : "grid gap-2"}>
 						<Label htmlFor="helperName">Naam Begeleider</Label>
 						<Input
 							type="string"
@@ -453,7 +464,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 							onChange={(e) => setHelperName(e.target.value)}
 						/>
 					</div>
-					<div className="grid gap-2">
+					<div className={bvd == "Koe" ? "hidden" : "grid gap-2"}>
 						<Label htmlFor="helperAge">Leeftijd Begeleider</Label>
 						<Input
 							type="number"
@@ -531,8 +542,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 						<Label htmlFor="aanmerkingen">
 							<b>Overige op- of aanmerkingen?</b>
 						</Label>
-						<Input
-							type="string"
+						<Textarea
 							id="aanmerkingen"
 							value={opmerkingen}
 							onChange={(e) => setOpmerkingen(e.target.value)}
