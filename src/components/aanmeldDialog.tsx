@@ -455,7 +455,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 							</SelectContent>
 						</Select>
 					</div>
-					<div className={bvd == "Koe" ? "hidden" : "grid gap-2"}>
+					<div className={bvd == "Pink" ? "grid gap-2" : "hidden"}>
 						<Label htmlFor="helperName">Naam Begeleider</Label>
 						<Input
 							type="string"
@@ -464,7 +464,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 							onChange={(e) => setHelperName(e.target.value)}
 						/>
 					</div>
-					<div className={bvd == "Koe" ? "hidden" : "grid gap-2"}>
+					<div className={bvd == "Pink" ? "grid gap-2" : "hidden"}>
 						<Label htmlFor="helperAge">Leeftijd Begeleider</Label>
 						<Input
 							type="number"
@@ -733,8 +733,6 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 					</div>
 				</div>
 			)}
-
-			{/* <Button type="submit">Registreren</Button> */}
 		</form>
 	);
 }
