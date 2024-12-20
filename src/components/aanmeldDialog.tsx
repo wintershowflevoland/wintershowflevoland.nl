@@ -89,6 +89,11 @@ export function AanmeldDialog() {
 }
 
 function AanmeldForm({ className }: React.ComponentProps<"form">) {
+	const dateOptions: Intl.DateTimeFormatOptions = {
+		day: "2-digit",
+		month: "2-digit",
+		year: "numeric",
+	};
 	// personal info
 	const [name, setName] = React.useState("");
 	const [email, setEmail] = React.useState("");
@@ -187,8 +192,14 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 								termsCRV: termsCRV ? "Ja" : "Nee",
 								rundName: cowItem.name,
 								rundNumber: cowItem.number,
-								rundBirth: cowItem.birth,
-								calfDate: cowItem.calf,
+								rundBirth: new Date(cowItem.birth).toLocaleDateString(
+									"nl-NL",
+									dateOptions
+								),
+								calfDate: new Date(cowItem.calf).toLocaleDateString(
+									"nl-NL",
+									dateOptions
+								),
 								calvedCount: cowItem.calved,
 								rundSoort: cowItem.rundSoort,
 								helperName: cowItem.helperName,
