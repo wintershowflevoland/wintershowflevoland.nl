@@ -31,6 +31,7 @@ import { useMediaQuery } from "@/hooks/use-media-query";
 import { cn } from "@/lib/utils";
 import { useEffect, useRef } from "react";
 import { Checkbox } from "./ui/checkbox";
+import { Progress } from "./ui/progress";
 import { Textarea } from "./ui/textarea";
 
 export function AanmeldDialog() {
@@ -108,6 +109,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 			birth: string;
 			calf: string;
 			calved: string;
+			rundSoort: string;
 			helperName: string;
 			helperAge: string;
 		}[]
@@ -118,6 +120,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 	const [cowNumber, setCowNumber] = React.useState("");
 	const [calfDate, setCalfDate] = React.useState("");
 	const [calvedCount, setCalvedCount] = React.useState("");
+	const [rundSoort, setRundSoort] = React.useState("");
 	const [helperName, setHelperName] = React.useState("");
 	const [helperAge, setHelperAge] = React.useState("");
 	// opmerkingen en voorwaarden
@@ -131,6 +134,8 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 
 	const dialogFormRef = useRef<HTMLFormElement>(null);
 
+	const [progress, setProgress] = React.useState(0);
+
 	useEffect(() => {
 		if (dialogFormRef.current) {
 			dialogFormRef.current.scrollTo({ top: 0, behavior: "smooth" });
@@ -138,14 +143,83 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 	}, [openPageId]);
 
 	useEffect(() => {
-		if (bvd == "Koe") {
+		if (rundSoort == "Koe") {
 			setHelperName("-");
 			setHelperAge("-");
 		} else {
 			setHelperName("");
 			setHelperAge("");
 		}
-	}, [bvd]);
+	}, [rundSoort]);
+
+	const postDataToSheet = async () => {
+		setOpenPageId(3); // Show loading page
+		setProgress(0);
+		let success = 0;
+
+		// Loop through each cowItem using for...of (which works well with async/await)
+		for (const cowItem of cowList) {
+			try {
+				const response = await fetch(
+					"https://script.google.com/macros/s/AKfycbxryo9gNy9uACiMm1CXEcPhVehhkfUJhB28PpZrCtqlueFnfwWVK9HJEnt8-ku0QSj1/exec",
+					{
+						redirect: "follow",
+						method: "POST",
+						headers: {
+							"Content-Type": "text/plain;charset=utf-8",
+						},
+						body: JSON.stringify(
+							{
+								name: name,
+								email: email,
+								phone: phone,
+								street: street,
+								postal: postal,
+								ubn: ubn,
+								ibr: ibr == "1" ? "Ja" : "Nee",
+								bvd: bvd == "1" ? "Ja" : "Nee",
+								paratbc: paratbc,
+								group: group == "1" ? "Ja" : "Nee",
+								praktijk: praktijk,
+								opmerkingen: opmerkingen || "-",
+								voorwaarden: voorwaarden ? "Ja" : "Nee",
+								termsGezondheidsDienst: termsGezondheidsDienst ? "Ja" : "Nee",
+								termsCRV: termsCRV ? "Ja" : "Nee",
+								rundName: cowItem.name,
+								rundNumber: cowItem.number,
+								rundBirth: cowItem.birth,
+								calfDate: cowItem.calf,
+								calvedCount: cowItem.calved,
+								rundSoort: cowItem.rundSoort,
+								helperName: cowItem.helperName,
+								helperAge: cowItem.helperAge,
+							},
+							null,
+							2
+						),
+					}
+				);
+
+				// Parse JSON response after waiting for fetch to complete
+				const responseData = await response.json();
+
+				if (responseData.success) {
+					success += 1;
+					setProgress((success / cowList.length) * 100);
+				}
+			} catch (error) {
+				console.error("Error in sending data for cowItem:", cowItem, error);
+			}
+		}
+
+		// Check if all cows were successfully added
+		if (success === cowList.length) {
+			setProgress(100);
+			setOpenPageId(4); // Show success page
+		} else {
+			setOpenPageId(5); // Show error page
+		}
+	};
 
 	return (
 		<form
@@ -445,7 +519,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 					</div>
 					<div className="grid gap-2">
 						<Label htmlFor="name">Soort rund.</Label>
-						<Select onValueChange={(e) => setBvd(e)}>
+						<Select onValueChange={(e) => setRundSoort(e)}>
 							<SelectTrigger>
 								<SelectValue placeholder="Selecteer antwoord" />
 							</SelectTrigger>
@@ -455,7 +529,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 							</SelectContent>
 						</Select>
 					</div>
-					<div className={bvd == "Pink" ? "grid gap-2" : "hidden"}>
+					<div className={rundSoort == "Pink" ? "grid gap-2" : "hidden"}>
 						<Label htmlFor="helperName">Naam Begeleider</Label>
 						<Input
 							type="string"
@@ -464,7 +538,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 							onChange={(e) => setHelperName(e.target.value)}
 						/>
 					</div>
-					<div className={bvd == "Pink" ? "grid gap-2" : "hidden"}>
+					<div className={rundSoort == "Pink" ? "grid gap-2" : "hidden"}>
 						<Label htmlFor="helperAge">Leeftijd Begeleider</Label>
 						<Input
 							type="number"
@@ -481,6 +555,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 								cowBirth == "" ||
 								calfDate == "" ||
 								calvedCount == "" ||
+								rundSoort == "" ||
 								helperName == "" ||
 								helperAge == ""
 							}
@@ -494,6 +569,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 										birth: cowBirth,
 										calf: calfDate,
 										calved: calvedCount,
+										rundSoort: rundSoort,
 										helperName: helperName,
 										helperAge: helperAge,
 									},
@@ -551,7 +627,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 
 					<div className="grid grid-cols-1 gap-2">
 						<div>
-							<b>Algemene voorwaarden keuring</b>
+							<b>Algemene voorwaarden keuring *</b>
 							<p>
 								* Het is mogelijk om met een bedrijfsgroep mee te doen,
 								bestaande uit drie dieren.{" "}
@@ -705,7 +781,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 							Vorige
 						</Button>
 						<Button
-							disabled={!voorwaarden || !termsCRV || !termsGezondheidsDienst}
+							disabled={!voorwaarden}
 							onClick={(e) => {
 								e.preventDefault();
 								console.log({
@@ -726,9 +802,66 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 									termsGezondheidsDienst: termsGezondheidsDienst,
 									termsCRV: termsCRV,
 								});
+								postDataToSheet();
 							}}
 						>
 							Inschrijven
+						</Button>
+					</div>
+				</div>
+			)}
+
+			{openPageId == 3 && (
+				<div>
+					<div className="grid gap-2">
+						<Label htmlFor="name">Gegevens verwerken...</Label>
+					</div>
+					<div className="flex gap-4 w-full [&>button]:grow">
+						<Progress value={progress} className="w-full" />
+					</div>
+				</div>
+			)}
+
+			{openPageId == 4 && (
+				<div>
+					<div className="grid gap-2">
+						<Label htmlFor="name">Bedankt voor uw aanmelding</Label>
+						<p>
+							Uw aanmelding is ontvangen. U ontvangt een bevestiging per mail.
+						</p>
+					</div>
+					<div className="flex gap-4 w-full [&>button]:grow">
+						<Button
+							variant="secondary"
+							onClick={(e) => {
+								e.preventDefault();
+								window.location.reload();
+							}}
+						>
+							Sluiten
+						</Button>
+					</div>
+				</div>
+			)}
+
+			{openPageId == 5 && (
+				<div>
+					<div className="grid gap-2">
+						<Label htmlFor="name">Aanmeldings fout</Label>
+						<p>
+							Er is een fout opgetreden bij het aanmelden. Loop het formulier na
+							en probeer het opnieuw.
+						</p>
+					</div>
+					<div className="flex gap-4 w-full [&>button]:grow">
+						<Button
+							variant="secondary"
+							onClick={(e) => {
+								e.preventDefault();
+								setOpenPageId(0);
+							}}
+						>
+							Nalopen formulier
 						</Button>
 					</div>
 				</div>
