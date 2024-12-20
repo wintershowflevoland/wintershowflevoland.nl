@@ -159,7 +159,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 
 	const postDataToSheet = async () => {
 		setOpenPageId(3); // Show loading page
-		setProgress(0);
+		setProgress(1);
 		let success = 0;
 
 		// Loop through each cowItem using for...of (which works well with async/await)
@@ -828,7 +828,10 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 						<Label htmlFor="name">Gegevens verwerken...</Label>
 					</div>
 					<div className="flex gap-4 w-full [&>button]:grow">
-						<Progress value={progress} className="w-full" />
+						<Progress
+							value={progress > 100 ? 100 : progress}
+							className="w-full"
+						/>
 					</div>
 				</div>
 			)}
