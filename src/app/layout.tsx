@@ -1,5 +1,6 @@
 import { FooterComp } from "@/components/footerComp";
 import { NavBarComp } from "@/components/navBarComp";
+import TopBannerComp from "@/components/topbannerComp";
 import { EventProvider } from "@/context/EventContext";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
@@ -35,9 +36,15 @@ export default function RootLayout({
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
 				<EventProvider>
+					{/* {children} */}
 					<div className=" flex flex-col w-full h-[100dvh]">
 						<NavBarComp />
-						<main className="flex-grow">{children}</main>
+						<main className="flex-grow">
+							<TopBannerComp  />
+							<div className="w-[90vw] lg:w-[70vw] mx-auto grid grid-flow-row gap-8">
+								{children}
+							</div>
+						</main>
 						<FooterComp />
 					</div>
 				</EventProvider>

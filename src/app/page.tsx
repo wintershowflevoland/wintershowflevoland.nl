@@ -1,130 +1,122 @@
+import AboutusComp from "@/components/aboutusComp";
+import NieuwsComp from "@/components/nieuwsComp";
+import PageScrollComp from "@/components/pageScrollComp";
+import SponsorsComp from "@/components/sponsorsComp";
 /* eslint-disable @next/next/no-img-element */
-import AanmeldButton from "@/components/aanmeldButton";
-import FotoAlbum from "@/components/fotoAlbum";
-import SponsorCard from "@/components/sponsorCard";
-import { Card } from "@/components/ui/card";
-import { getAllFotoAlbums, getAllPosts, getAllSponsors } from "@/lib/api";
-import { MoreStories } from "./_components/more-stories";
 
 export default function Home() {
-	const allPosts = getAllPosts();
-	const allSponsors = getAllSponsors();
-	const allFotoAlbums = getAllFotoAlbums();
 	return (
-		<div>
-			{/* top of page */}
-			<div>
-				<img
-					src="/assets/site/header-picture.jpg"
-					className="block object-cover w-full h-[25vh] md:h-[40vh] grayscale z-0"
-					alt=""
-				/>
-				<div className="-translate-y-1/2">
-					<Card className="w-[90vw] lg:w-[70vw] h-fit md:h-[20vh] mx-auto overflow-hidden bg-transparent border-transparent grid sm:grid-cols-2 ">
-						<div className="h-full w-full hidden sm:block">
-							<img
-								src="/assets/site/header-card-picture.jpg"
-								className="md:w-[70vw] h-ful md:h-[20vh] block object-cover w-full"
-								alt=""
-							/>
-						</div>
-						<div className="bg-card p-4">
-							<h1 className="text-lg sm:text-2xl font-bold">
-								Wintershow Flevoland <br /> Dinsdagavond 4 maart <br /> Aanvang
-								18:30 uur.
-							</h1>
-							<p className="text-sm">
-								De voorbereidingen voor de Wintershow Dronten zijn al in volle
-								gang! Daarmee is de datum voor aankomend jaar bekend en kan je
-								je daar voor aanmelden.
-							</p>
-							<br />
-							<AanmeldButton />
-						</div>
-					</Card>
-				</div>
-			</div>
-			{/* content */}
-			<div className="w-[90vw] lg:w-[70vw] mx-auto grid grid-flow-row gap-8">
-				{/* Fotos */}
-				<div>
-					<h2 className="text-2xl font-bold pb-2" id="fotos">
-						Nieuws:
-					</h2>
-					{allPosts.length > 0 && <MoreStories posts={allPosts} />}
-				</div>
-				{/* About us */}
-				<div>
-					<h2 className="text-2xl font-bold pb-2" id="over-ons">
-						Over Ons
-					</h2>
-					<div className="flex grid-cols-2 gap-4">
-						<Card className="bg-card p-4 grow">
-							<h2 className="text-lg font-bold">
-								Wat is Wintershow Flevoland?
-							</h2>
-							<p className="text-sm">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit.
-								Eligendi, unde perspiciatis tempore perferendis commodi repellat
-								minima aspernatur modi cumque! Inventore nisi consectetur saepe
-								quis doloremque. Excepturi magni possimus recusandae neque?
-							</p>
-						</Card>
-						<div>
-							<img
-								src="/assets/site/logo.jpeg"
-								className=" min-w-32  sm:min-w-44 lg:min-w-64 max-h-96 rounded-lg"
-								alt=""
-							/>
-						</div>
-					</div>
-				</div>
-
-				{/* Sponsors */}
-				<div>
-					<h2 className="text-2xl font-bold pb-2" id="sponsoren">
-						Sponsoren:
-					</h2>
-					<div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-						{allSponsors.map((sponsor) => (
-							<SponsorCard
-								key={sponsor.slug}
-								img={sponsor.logo}
-								title={sponsor.name}
-								url={sponsor.siteUrl}
-							/>
-						))}
-						<SponsorCard
-							img={"/assets/site/logo-icon.jpeg"}
-							title={"Static  Sponor"}
-							url={"https://google.com"}
-						/>
-					</div>
-				</div>
-
-				{/* Fotos */}
-				<div>
-					<h2 className="text-2xl font-bold pb-2" id="fotos">
-						Fotos:
-					</h2>
-					<div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-						{allFotoAlbums.map((album) => (
-							<FotoAlbum
-								key={album.slug}
-								albumTitle={album.title}
-								albumUrl={album.url}
-							/>
-						))}
-					</div>
-				</div>
-			</div>
-		</div>
+		<PageScrollComp>
+			{/* Nieuws */}
+			<NieuwsComp />
+			{/* About us */}
+			<AboutusComp />
+			{/* Sponsors */}
+			<SponsorsComp />
+			{/* Fotos
+			<FotosComp /> */}
+		</PageScrollComp>
 	);
 }
 
-{
-	/* <FacebookAlbumEmbed
-					albumTitle={"test 1"}
-					albumId={"a.149890187626098"}
-				/> */
-}
+// export default function Page() {
+// 	// Define an array with the section IDs
+// 	const sectionIds = [
+// 		"topbanner",
+// 		"section1",
+// 		"section2",
+// 		"section3",
+// 		"footer",
+// 	];
+
+// 	// Function to handle scroll behavior
+// 	useEffect(() => {
+// 		const sections = sectionIds.map((id) => document.getElementById(id));
+
+// 		let lastScrollTime = 0; // To track the last time scroll happened
+// 		let isScrolling = false; // To prevent multiple scrolls from being triggered too quickly
+
+// 		const handleScroll = (event: WheelEvent) => {
+// 			event.preventDefault();
+
+// 			const currentTime = new Date().getTime();
+
+// 			// If too much time has passed since last scroll, reset scrolling behavior
+// 			if (currentTime - lastScrollTime < 666 || isScrolling) return;
+
+// 			lastScrollTime = currentTime;
+
+// 			// Find the current section based on the section's center being in the viewport
+// 			const currentSectionIndex = sections.findIndex((section) => {
+// 				if (!section) return false;
+// 				const rect = section.getBoundingClientRect();
+// 				// Check if the center of the section is in the viewport
+// 				return (
+// 					rect.top + rect.height / 2 >= 0 &&
+// 					rect.top + rect.height / 2 <= window.innerHeight
+// 				);
+// 			});
+
+// 			console.log("scrolling to " + currentSectionIndex);
+
+// 			// Calculate the scroll direction (down or up)
+// 			const isScrollingDown = event.deltaY > 0;
+
+// 			// Check if we are in a scrollable area (threshold to avoid skipping too many sections)
+// 			const shouldScroll =
+// 				(isScrollingDown && currentSectionIndex < sections.length - 1) ||
+// 				(!isScrollingDown && currentSectionIndex > 0);
+
+// 			if (shouldScroll) {
+// 				// Scroll down: go to the next section or scroll up: go to the previous section
+// 				const nextSection = isScrollingDown
+// 					? sections[currentSectionIndex + 1]
+// 					: sections[currentSectionIndex - 1];
+
+// 				if (nextSection) {
+// 					// Lock scroll while transitioning
+// 					isScrolling = true;
+// 					nextSection.scrollIntoView({
+// 						behavior: "smooth",
+// 						block: "start",
+// 					});
+
+// 					// Release scroll lock after scroll transition
+// 					setTimeout(() => {
+// 						isScrolling = false;
+// 					}, 800); // Adjust the timeout based on scroll transition duration
+// 				}
+// 			}
+// 		};
+
+// 		// Add the event listener with passive: false
+// 		window.addEventListener("wheel", handleScroll, { passive: false });
+
+// 		return () => {
+// 			window.removeEventListener("wheel", handleScroll);
+// 		};
+// 	}, [sectionIds]);
+
+// 	return (
+// 		<div className="flex flex-col items-center">
+// 			<section
+// 				id="section1"
+// 				className="w-full h-screen bg-blue-300 flex justify-center items-center text-white text-3xl"
+// 			>
+// 				<NieuwsComp />
+// 			</section>
+// 			<section
+// 				id="section2"
+// 				className="w-full h-screen bg-green-300 flex justify-center items-center text-white text-3xl"
+// 			>
+// 				<AboutusComp />
+// 			</section>
+// 			<section
+// 				id="section3"
+// 				className="w-full h-screen bg-red-300 flex justify-center items-center text-white text-3xl"
+// 			>
+// 				<SponsorsComp />
+// 			</section>
+// 		</div>
+// 	);
+// }
