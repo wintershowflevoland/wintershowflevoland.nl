@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import {
 	Card,
 	CardContent,
-	CardDescription,
 	CardFooter,
 	CardHeader,
 	CardTitle,
@@ -26,9 +25,9 @@ export function MoreStories({ posts }: Props) {
 							className=" rounded-t-md"
 						/>
 						<CardTitle>{post.title}</CardTitle>
-						<CardDescription>
+						{/* <CardDescription>
 							{new Date(post.date).toLocaleDateString()}
-						</CardDescription>
+						</CardDescription> */}
 					</CardHeader>
 					<CardContent className="grow">
 						<p>

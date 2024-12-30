@@ -10,7 +10,7 @@ export function FooterComp() {
 	};
 
 	return (
-		<footer className="grid grid-cols-1 gap-4 px-8 py-4 mt-24">
+		<footer className="grid grid-cols-1 gap-4 px-8 py-4 mt-24" id="footer">
 			<div className="w-full grid gap-2 grid-cols-1 md:grid-cols-3">
 				<div>
 					<p className=" font-semibold">Contact:</p>

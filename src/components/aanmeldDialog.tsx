@@ -41,13 +41,22 @@ export function AanmeldDialog() {
 	const { eventState, triggerEvent } = useEvent();
 
 	React.useEffect(() => {
+		console.log("eventState", eventState);
 		if (eventState) {
 			if (eventState === "AanmeldDialog") {
 				setOpen(true);
-				triggerEvent("");
 			}
 		}
 	}, [eventState]);
+
+	React.useEffect(() => {
+		if (!open) {
+			triggerEvent("AanmeldDialogClosed");
+			setTimeout(() => {
+				triggerEvent("");
+			}, 10);
+		}
+	}, [open, triggerEvent]);
 
 	if (isDesktop) {
 		return (
@@ -148,6 +157,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 	}, [openPageId]);
 
 	useEffect(() => {
+		console.log("rundSoort", rundSoort);
 		if (rundSoort == "Koe") {
 			setHelperName("-");
 			setHelperAge("-");
@@ -166,7 +176,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 		for (const cowItem of cowList) {
 			try {
 				const response = await fetch(
-					"https://script.google.com/macros/s/AKfycbxryo9gNy9uACiMm1CXEcPhVehhkfUJhB28PpZrCtqlueFnfwWVK9HJEnt8-ku0QSj1/exec",
+					"https://script.google.com/macros/s/AKfycbyGv2Isdufrx8x6BxQlan7iwoCdKlAFvBO3TW4rho8FmAREnZbT4uru9bTJrwLvjO2L6w/exec",
 					{
 						redirect: "follow",
 						method: "POST",
@@ -531,9 +541,21 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 					<div className="grid gap-2">
 						<Label htmlFor="name">Soort rund.</Label>
 						<Select onValueChange={(e) => setRundSoort(e)}>
-							<SelectTrigger>
-								<SelectValue placeholder="Selecteer antwoord" />
-							</SelectTrigger>
+							{rundSoort == "" && (
+								<SelectTrigger>
+									<SelectValue placeholder="Selecteer antwoord" />
+								</SelectTrigger>
+							)}
+							{rundSoort == "Koe" && (
+								<SelectTrigger>
+									<SelectValue placeholder="Koe" />
+								</SelectTrigger>
+							)}
+							{rundSoort == "Pink" && (
+								<SelectTrigger>
+									<SelectValue placeholder="Pink" />
+								</SelectTrigger>
+							)}
 							<SelectContent>
 								<SelectItem value="Koe">Koe</SelectItem>
 								<SelectItem value="Pink">Pink</SelectItem>
@@ -592,6 +614,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 								setCalvedCount("");
 								setHelperName("");
 								setHelperAge("");
+								setRundSoort("Koe");
 							}}
 						>
 							Voeg koe toe
@@ -728,7 +751,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 						<div>
 							<b>
 								Toestemming opvragen gegevens bij de gezondheidsdienst +
-								toestemming melden I en R.
+								toestemming melden I en R. *
 							</b>
 							<p>
 								Ondergetekende geeft het bestuur van de organisatie van de
@@ -757,7 +780,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 					</div>
 					<div className="grid grid-cols-1 gap-2">
 						<div>
-							<b>Toestemming delen gegevens met CRV</b>
+							<b>Toestemming delen gegevens met CRV *</b>
 							<p>
 								Ondergetekende geeft het bestuur van de organisatie van de
 								fokveedag toestemming de MPR en Stamboekgegevens bij Coöperatie
@@ -792,7 +815,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 							Vorige
 						</Button>
 						<Button
-							disabled={!voorwaarden}
+							disabled={!voorwaarden || !termsCRV || !termsGezondheidsDienst}
 							onClick={(e) => {
 								e.preventDefault();
 								console.log({

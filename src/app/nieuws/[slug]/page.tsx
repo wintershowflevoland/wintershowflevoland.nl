@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug } from "../../../lib/api";
 import markdownToHtml from "../../../lib/markdownToHtml";
-import Alert from "../../_components/alert";
 import Container from "../../_components/container";
 import { PostBody } from "../../_components/post-body";
 import { PostHeader } from "../../_components/post-header";
@@ -18,7 +17,7 @@ export default async function Nieuws({ params }: Params) {
 
 	return (
 		<div>
-			<Alert preview={post.preview} />
+			{/* <Alert preview={post.preview} /> */}
 			<Container>
 				{/* <Header /> */}
 				<article className="my-32">
