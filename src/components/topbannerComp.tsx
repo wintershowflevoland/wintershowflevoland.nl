@@ -1,4 +1,5 @@
 import AanmeldButton from "./aanmeldButton";
+import { NavBarComp } from "./navBarComp";
 import { Card } from "./ui/card";
 
 export default function TopBannerComp() {
@@ -10,11 +11,11 @@ export default function TopBannerComp() {
 				alt=""
 			/>
 			<div className="-translate-y-1/2">
-				<Card className="w-[90vw] lg:w-[70vw] h-fit md:h-[20vh] mx-auto overflow-hidden bg-transparent border-transparent grid sm:grid-cols-2 ">
+				<Card className="w-[90vw] lg:w-[70vw] h-fit md:h-[30vh] lg:h-[25vh] mx-auto overflow-hidden bg-transparent border-transparent grid sm:grid-cols-2 ">
 					<div className="h-full w-full hidden sm:block">
 						<img
 							src="/assets/site/header-card-picture.jpg"
-							className="md:w-[70vw] h-ful md:h-[20vh] block object-cover w-full"
+							className="md:w-[70vw] h-ful md:h-[30vh] lg:h-[25vh] block object-cover w-full"
 							alt=""
 						/>
 					</div>
@@ -32,6 +33,7 @@ export default function TopBannerComp() {
 						<AanmeldButton />
 					</div>
 				</Card>
+				<NavBarComp />
 			</div>
 		</div>
 	);

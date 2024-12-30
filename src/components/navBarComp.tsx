@@ -40,7 +40,7 @@ export function NavBarComp() {
 	};
 
 	return (
-		<nav className="fixed w-full bg-card dark:bg-background py-2 rounded-b-lg font-medium z-40 ">
+		<nav className="w-full bg-card dark:bg-background py-2 rounded-b-lg font-medium">
 			<div className="w-[90vw] lg:w-[70vw] m-auto px-1">
 				<div className="flex gap-2 md:gap-4 items-center">
 					<Link href="/">

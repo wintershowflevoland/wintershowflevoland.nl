@@ -38,9 +38,11 @@ export default function RootLayout({
 				<EventProvider>
 					{/* {children} */}
 					<div className=" flex flex-col w-full h-[100dvh]">
-						<NavBarComp />
+						<div className="fixed w-full z-40">
+							<NavBarComp />
+						</div>
 						<main className="flex-grow">
-							<TopBannerComp  />
+							<TopBannerComp />
 							<div className="w-[90vw] lg:w-[70vw] mx-auto grid grid-flow-row gap-8">
 								{children}
 							</div>
