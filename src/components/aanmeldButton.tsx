@@ -7,6 +7,9 @@ export default function AanmeldButton() {
 
 	const handelAanmelden = (): void => {
 		triggerEvent("AanmeldDialog");
+		setTimeout(() => {
+			triggerEvent("");
+		}, 10);
 	};
 
 	return <Button onClick={handelAanmelden}>Aanmelden</Button>;

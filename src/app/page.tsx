@@ -1,4 +1,5 @@
 import AboutusComp from "@/components/aboutusComp";
+import FotosComp from "@/components/fotosComp";
 import NieuwsComp from "@/components/nieuwsComp";
 import PageScrollComp from "@/components/pageScrollComp";
 import SponsorsComp from "@/components/sponsorsComp";
@@ -13,9 +14,19 @@ export default function Home() {
 			<AboutusComp />
 			{/* Sponsors */}
 			<SponsorsComp />
-			{/* Fotos
-			<FotosComp /> */}
+			{/* Fotos */}
+			<FotosComp />
 		</PageScrollComp>
+		// <>
+		// 	{/* Nieuws */}
+		// 	<NieuwsComp />
+		// 	{/* About us */}
+		// 	<AboutusComp />
+		// 	{/* Sponsors */}
+		// 	<SponsorsComp />
+		// 	{/* Fotos */}
+		// 	<FotosComp />
+		// </>
 	);
 }
 

@@ -25,13 +25,13 @@ export function NavBarComp() {
 	const LinksList = ({ className }: { className?: string }) => {
 		return (
 			<div className={"gap-2 md:gap-4 items-center " + className}>
-				<Link href="/#over-ons" className="hover:underline">
+				<Link href="/#section-2" className="hover:underline">
 					OverOns
 				</Link>
-				<Link href="/#sponsoren" className="hover:underline">
+				<Link href="/#section-3" className="hover:underline">
 					Sponsoren
 				</Link>
-				<Link href="/#fotos" className="hover:underline">
+				<Link href="/#section-4" className="hover:underline">
 					Foto&apos;s
 				</Link>
 				<AanmeldButton />
