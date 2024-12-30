@@ -176,7 +176,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 		for (const cowItem of cowList) {
 			try {
 				const response = await fetch(
-					"https://script.google.com/macros/s/AKfycbxryo9gNy9uACiMm1CXEcPhVehhkfUJhB28PpZrCtqlueFnfwWVK9HJEnt8-ku0QSj1/exec",
+					"https://script.google.com/macros/s/AKfycbyGv2Isdufrx8x6BxQlan7iwoCdKlAFvBO3TW4rho8FmAREnZbT4uru9bTJrwLvjO2L6w/exec",
 					{
 						redirect: "follow",
 						method: "POST",
