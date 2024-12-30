@@ -1,3 +1,4 @@
+import { AanmeldDialog } from "@/components/aanmeldDialog";
 import { FooterComp } from "@/components/footerComp";
 import { NavBarComp } from "@/components/navBarComp";
 import TopBannerComp from "@/components/topbannerComp";
@@ -46,6 +47,7 @@ export default function RootLayout({
 							<div className="w-[90vw] lg:w-[70vw] mx-auto grid grid-flow-row gap-8">
 								{children}
 							</div>
+							<AanmeldDialog />
 						</main>
 						<FooterComp />
 					</div>

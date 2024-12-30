@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useEffect } from "react";
 import AanmeldButton from "./aanmeldButton";
-import { AanmeldDialog } from "./aanmeldDialog";
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -68,7 +67,6 @@ export function NavBarComp() {
 						</NavigationMenuList>
 					</NavigationMenu>
 				</div>
-				<AanmeldDialog />
 			</div>
 		</nav>
 	);
