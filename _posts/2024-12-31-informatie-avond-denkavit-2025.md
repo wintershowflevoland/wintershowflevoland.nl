@@ -1,5 +1,5 @@
 ---
-title: informatie avond Denkavit! 2025
+title: Informatie avond Denkavit! 2025
 excerpt: " 7 januari vind er weer een nieuwe informatie avond plaats. Dit keer
   op de schoolboerderij van Dronten! Deze avond zal Marijn vanuit Denkavit
   uitleg geven hoe je de optimale groei van kalf tot pink krijgt en hoe je het
