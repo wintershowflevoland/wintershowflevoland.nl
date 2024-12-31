@@ -1,22 +1,17 @@
-import AboutusComp from "@/components/aboutusComp";
-import FotosComp from "@/components/fotosComp";
+import BottomFotoRapperComp from "@/components/BottomFotoRapperComp";
 import NieuwsComp from "@/components/nieuwsComp";
-import PageScrollComp from "@/components/pageScrollComp";
 import SponsorsComp from "@/components/sponsorsComp";
 /* eslint-disable @next/next/no-img-element */
 
 export default function Home() {
 	return (
-		<PageScrollComp>
-			{/* Nieuws */}
+		<div>
 			<NieuwsComp />
-			{/* About us */}
-			<AboutusComp />
-			{/* Sponsors */}
+			<BottomFotoRapperComp />
+			<br />
+			<br />
 			<SponsorsComp />
-			{/* Fotos */}
-			<FotosComp />
-		</PageScrollComp>
+		</div>
 		// <>
 		// 	{/* Nieuws */}
 		// 	<NieuwsComp />

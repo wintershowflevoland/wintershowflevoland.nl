@@ -4,8 +4,8 @@ import { getAllPosts } from "@/lib/api";
 export default function NieuwsComp() {
 	const allPosts = getAllPosts();
 	return (
-		<div>
-			<h2 className="text-2xl font-bold pb-2" id="nieuws">
+		<div id="nieuws-home">
+			<h2 className="z-10 text-2xl font-bold pb-2" id="nieuws">
 				Nieuws:
 			</h2>
 			{allPosts.length > 0 && <MoreStories posts={allPosts} />}
