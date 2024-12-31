@@ -99,8 +99,8 @@ export function AanmeldDialog() {
 
 function AanmeldForm({ className }: React.ComponentProps<"form">) {
 	// closed Date
-	const formClosedDate = new Date("2025-02-23T00:00:00Z");
-
+	const formClosedDate = new Date("2025-03-01T00:00:00Z");
+	//2025-02-23T00:00:00Z
 	const dateOptions: Intl.DateTimeFormatOptions = {
 		day: "2-digit",
 		month: "2-digit",
@@ -288,7 +288,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 						<Input
 							type="phone"
 							id="phone"
-							placeholder="+31600000000"
+							placeholder="0601234567"
 							value={phone}
 							onChange={(e) => setPhone(e.target.value)}
 							onBlur={(e) => e.target.reportValidity()}
@@ -483,18 +483,20 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 						<hr />
 						<div className="grid grid-flow-col gap-2 overflow-x-scroll">
 							<div key={"ValuesName"} className="min-w-40 w-full font-semibold">
-								<p>RundName:</p>
-								<p>LeefNummer:</p>
-								<p>RundGeboorte:</p>
-								<p>KalfDatum:</p>
-								<p>KeerGeKalft:</p>
-								<p>BegeleiderNaam:</p>
-								<p>BegeleiderLeeftijd:</p>
+								<p>Naam rund:</p>
+								<p>Levensnummer:</p>
+								<p>Naam vader:</p>
+								<p>Geboortedatum:</p>
+								<p>Kalfdatum:</p>
+								<p>Aantal kalvingen:</p>
+								<p>Naam begeleider:</p>
+								<p>Leeftijd begeleider:</p>
 							</div>
 							{cowList.map((cow, index) => (
 								<div key={index} className="min-w-40 w-full">
 									<p>{cow.name}</p>
 									<p>{cow.number}</p>
+									<p>{cow.fatherName}</p>
 									<p>{cow.birth}</p>
 									<p>{cow.calf}</p>
 									<p>{cow.calved}</p>
@@ -789,7 +791,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 							</p>
 							<p>
 								Tevens wordt er toestemming gegeven aan de organisatie om de
-								dieren I en R te melden de dag van de keuring.
+								dieren I & R aan en af te melden de dag van de keuring.
 							</p>
 						</div>
 						<div className="flex items-center space-x-2">
