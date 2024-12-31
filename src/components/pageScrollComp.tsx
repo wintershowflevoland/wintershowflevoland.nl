@@ -1,6 +1,7 @@
 "use client";
 import { useEvent } from "@/context/EventContext";
 import { Children, ReactNode, useEffect, useState } from "react";
+import BottomFotoRapperComp from "./BottomFotoRapperComp";
 
 interface PageScrollCompProps {
 	children: ReactNode; // Accepts children as a prop
@@ -176,6 +177,7 @@ export default function PageScrollComp({ children }: PageScrollCompProps) {
 					{child}
 				</section>
 			))}
+			<BottomFotoRapperComp />
 		</div>
 	);
 }
