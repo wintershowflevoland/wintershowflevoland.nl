@@ -10,6 +10,7 @@ interface PageScrollCompProps {
 export default function PageScrollComp({ children }: PageScrollCompProps) {
 	const [dialogOpen, setDialogOpen] = useState(false);
 	const { eventState } = useEvent();
+	const [showBottomImages, setShowBottomImages] = useState(false);
 
 	useEffect(() => {
 		if (eventState === "AanmeldDialog") {
@@ -90,6 +91,16 @@ export default function PageScrollComp({ children }: PageScrollCompProps) {
 					rect.top + rect.height / 2 <= window.innerHeight
 				);
 			});
+
+			if (currentSectionIndex === 2 || currentSectionIndex === 3) {
+				console.log("index 2");
+				setShowBottomImages(true);
+			} else {
+				console.log("index not 2");
+				if (showBottomImages) {
+					setShowBottomImages(false);
+				}
+			}
 
 			// Check if we are in a scrollable area
 			const shouldScroll =
@@ -177,7 +188,7 @@ export default function PageScrollComp({ children }: PageScrollCompProps) {
 					{child}
 				</section>
 			))}
-			<BottomFotoRapperComp />
+			<BottomFotoRapperComp hidden={showBottomImages} />
 		</div>
 	);
 }
