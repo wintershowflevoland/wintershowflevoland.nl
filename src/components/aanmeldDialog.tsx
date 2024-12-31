@@ -98,6 +98,9 @@ export function AanmeldDialog() {
 }
 
 function AanmeldForm({ className }: React.ComponentProps<"form">) {
+	// closed Date
+	const formClosedDate = new Date("2025-02-23T00:00:00Z");
+
 	const dateOptions: Intl.DateTimeFormatOptions = {
 		day: "2-digit",
 		month: "2-digit",
@@ -120,6 +123,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 		{
 			name: string;
 			number: string;
+			fatherName: string;
 			birth: string;
 			calf: string;
 			calved: string;
@@ -132,6 +136,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 	const [cowName, setCowName] = React.useState("");
 	const [cowBirth, setCowBirth] = React.useState("");
 	const [cowNumber, setCowNumber] = React.useState("");
+	const [cowFatherName, setCowFatherName] = React.useState("");
 	const [calfDate, setCalfDate] = React.useState("");
 	const [calvedCount, setCalvedCount] = React.useState("");
 	const [rundSoort, setRundSoort] = React.useState("");
@@ -202,6 +207,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 								termsCRV: termsCRV ? "Ja" : "Nee",
 								rundName: cowItem.name,
 								rundNumber: cowItem.number,
+								rundFatherName: cowItem.fatherName,
 								rundBirth: new Date(cowItem.birth).toLocaleDateString(
 									"nl-NL",
 									dateOptions
@@ -242,6 +248,10 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 		}
 	};
 
+	if (new Date() > formClosedDate && openPageId !== 10) {
+		setOpenPageId(10);
+	}
+
 	return (
 		<form
 			ref={dialogFormRef}
@@ -270,6 +280,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 							placeholder="naam@me.mail"
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
+							onBlur={(e) => e.target.reportValidity()}
 						/>
 					</div>
 					<div className="grid gap-2">
@@ -280,6 +291,8 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 							placeholder="+31600000000"
 							value={phone}
 							onChange={(e) => setPhone(e.target.value)}
+							onBlur={(e) => e.target.reportValidity()}
+							pattern="(^\+[0-9]{2}|^\+[0-9]{2}\(0\)|^\(\+[0-9]{2}\)\(0\)|^00[0-9]{2}|^0)([0-9]{9}$|[0-9\-\s]{10}$)"
 						/>
 					</div>
 					<div className="grid gap-2">
@@ -512,12 +525,23 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 						/>
 					</div>
 					<div className="grid gap-2">
+						<Label htmlFor="name">Naam vader</Label>
+						<Input
+							type="text"
+							id="cowFatherName"
+							placeholder=""
+							value={cowFatherName}
+							onChange={(e) => setCowFatherName(e.target.value)}
+						/>
+					</div>
+					<div className="grid gap-2">
 						<Label htmlFor="cowBirth">Geboorte Datum</Label>
 						<Input
 							type="date"
 							id="cowBirth"
 							value={cowBirth}
 							onChange={(e) => setCowBirth(e.target.value)}
+							onBlur={(e) => e.target.reportValidity()}
 						/>
 					</div>
 					<div className="grid gap-2">
@@ -527,6 +551,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 							id="calfDate"
 							value={calfDate}
 							onChange={(e) => setCalfDate(e.target.value)}
+							onBlur={(e) => e.target.reportValidity()}
 						/>
 					</div>
 					<div className="grid gap-2">
@@ -536,6 +561,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 							id="calvedCount"
 							value={calvedCount}
 							onChange={(e) => setCalvedCount(e.target.value)}
+							onBlur={(e) => e.target.reportValidity()}
 						/>
 					</div>
 					<div className="grid gap-2">
@@ -578,6 +604,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 							id="helperAge"
 							value={helperAge}
 							onChange={(e) => setHelperAge(e.target.value)}
+							onBlur={(e) => e.target.reportValidity()}
 						/>
 					</div>
 					<div className="grid gap-2">
@@ -585,6 +612,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 							disabled={
 								cowName == "" ||
 								cowNumber == "" ||
+								cowFatherName == "" ||
 								cowBirth == "" ||
 								calfDate == "" ||
 								calvedCount == "" ||
@@ -599,6 +627,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 									{
 										name: cowName,
 										number: cowNumber,
+										fatherName: cowFatherName,
 										birth: cowBirth,
 										calf: calfDate,
 										calved: calvedCount,
@@ -609,12 +638,12 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 								]);
 								setCowName("");
 								setCowNumber("");
+								setCowFatherName("");
 								setCowBirth("");
 								setCalfDate("");
 								setCalvedCount("");
-								setHelperName("");
-								setHelperAge("");
-								setRundSoort("Koe");
+								setHelperName("-");
+								setHelperAge("-");
 							}}
 						>
 							Voeg koe toe
@@ -899,6 +928,29 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 							}}
 						>
 							Nalopen formulier
+						</Button>
+					</div>
+				</div>
+			)}
+
+			{openPageId == 10 && (
+				<div>
+					<div className="grid gap-2">
+						<Label htmlFor="name">Aanmeldingen gesloten</Label>
+						<p>
+							De aanmeldingen voor de keuring zijn gesloten. U kunt zich niet
+							meer aanmelden.
+						</p>
+					</div>
+					<div className="flex gap-4 w-full [&>button]:grow">
+						<Button
+							variant="secondary"
+							onClick={(e) => {
+								e.preventDefault();
+								window.location.reload();
+							}}
+						>
+							Sluiten
 						</Button>
 					</div>
 				</div>
