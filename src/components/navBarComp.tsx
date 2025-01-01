@@ -11,7 +11,7 @@ import {
 	NavigationMenuTrigger,
 } from "./ui/navigation-menu";
 
-export function NavBarComp() {
+export function NavBarComp({ small }: { small?: boolean }) {
 	useEffect(() => {
 		const prefersDarkMode = window.matchMedia(
 			"(prefers-color-scheme: dark)"
@@ -44,8 +44,14 @@ export function NavBarComp() {
 	return (
 		<nav className="w-full bg-card dark:bg-background py-2 rounded-b-lg font-medium">
 			<div className="w-[90vw] lg:w-[70vw] m-auto px-1">
-				<div className="flex gap-2 md:gap-4 items-center">
-					<Link href="/">
+				<div
+					className={
+						"flex gap-2 md:gap-4 items-center" +
+						" " +
+						(small ? "w-fit mx-auto" : "")
+					}
+				>
+					<Link href="/" hidden={small}>
 						<img
 							src="/assets/site/logo-icon-transparant.png"
 							alt="logo"
@@ -54,12 +60,15 @@ export function NavBarComp() {
 					</Link>
 					<Link
 						href="/"
-						className="hover:underline grow text-lg font-bold flex"
+						className={
+							small ? "" : "hover:underline grow text-lg font-bold flex"
+						}
+						hidden={small}
 					>
 						<h1 className="">Wintershow Flevoland</h1>
 					</Link>
-					<LinksList className="hidden md:flex" />
-					<NavigationMenu className="block md:hidden">
+					<LinksList className={small ? "flex" : "hidden md:flex"} />
+					<NavigationMenu className={small ? "hidden" : "block md:hidden"}>
 						<NavigationMenuList>
 							<NavigationMenuItem>
 								<NavigationMenuTrigger>Menu</NavigationMenuTrigger>
