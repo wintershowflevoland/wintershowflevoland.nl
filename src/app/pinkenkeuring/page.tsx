@@ -380,8 +380,7 @@ export default function PinkenKeuring() {
 			</p>
 			<br />
 			<iframe
-				width="560"
-				height="315"
+				className="w-full aspect-video"
 				src="https://www.youtube-nocookie.com/embed/B2p8vD8kUEY?si=IZfQH1lLyPfKeRvP"
 				title="YouTube video player"
 				frameBorder="0"
