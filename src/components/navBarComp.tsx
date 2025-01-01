@@ -23,7 +23,12 @@ export function NavBarComp({ small }: { small?: boolean }) {
 
 	const LinksList = ({ className }: { className?: string }) => {
 		return (
-			<div className={"gap-2 md:gap-4 items-center " + className}>
+			<div
+				className={
+					"gap-2 md:gap-4 items-center text-sm md:text-lg md:font-semibold " +
+					className
+				}
+			>
 				<Link href="/pinkenkeuring" className="hover:underline">
 					Pinken keuring
 				</Link>

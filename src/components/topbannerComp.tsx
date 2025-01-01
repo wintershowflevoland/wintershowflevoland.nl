@@ -7,7 +7,7 @@ export default function TopBannerComp() {
 		<div className="z-50 relative" id="topbanner">
 			<img
 				src="/assets/site/header-picture.jpg"
-				className="block object-cover w-full h-[25vh] md:h-[40vh] grayscale z-0"
+				className="block object-cover w-full h-[35vh] md:h-[40vh] grayscale z-0"
 				alt=""
 			/>
 			<div className="absolute top-0 w-full z-10">
