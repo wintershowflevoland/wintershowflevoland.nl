@@ -24,14 +24,17 @@ export function NavBarComp() {
 	const LinksList = ({ className }: { className?: string }) => {
 		return (
 			<div className={"gap-2 md:gap-4 items-center " + className}>
-				<Link href="/#section-2" className="hover:underline">
-					OverOns
+				<Link href="/pinkenkeuring" className="hover:underline">
+					Pinken keuring
 				</Link>
-				<Link href="/#section-3" className="hover:underline">
-					Sponsoren
+				<Link href="/sponsoring" className="hover:underline">
+					Sponsoring
 				</Link>
-				<Link href="/#section-4" className="hover:underline">
+				<Link href="/fotos" className="hover:underline">
 					Foto&apos;s
+				</Link>
+				<Link href="/uitslag" className="hover:underline">
+					Uitslag
 				</Link>
 				<AanmeldButton />
 			</div>
@@ -71,3 +74,4 @@ export function NavBarComp() {
 		</nav>
 	);
 }
+// Home(mobile), Pinkenheuring, Sponsoring, Fotos, Agenda, Utslag

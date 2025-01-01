@@ -23,14 +23,14 @@ export default function BottomFotoRapperComp() {
 	return (
 		<div className={"-z-10 overflow-hidden hidden lg:block"}>
 			<img
-				className="w-[25vw] absolute left-[-50px] rounded-md -z-10"
+				className="w-[25vw] absolute left-[-50px] rounded-md -z-10 grayscale"
 				style={{ bottom: "-" + (newsHeight + heightOffset) + "px" }}
 				src="/assets/site/foto-bottom-left.jpg"
 				alt=""
 			/>
 			<img
 				style={{ bottom: "-" + (newsHeight + heightOffset) + "px" }}
-				className="w-[25vw] absolute right-[-50px] rounded-md transform -scale-x-100 -z-10"
+				className="w-[25vw] absolute right-[-50px] rounded-md transform -scale-x-100 -z-10 grayscale"
 				src="/assets/site/foto-bottom-right.jpg"
 				alt=""
 			/>

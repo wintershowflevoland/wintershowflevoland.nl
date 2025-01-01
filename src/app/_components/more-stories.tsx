@@ -22,7 +22,9 @@ export function MoreStories({ posts }: Props) {
 						<img
 							src={post.coverImage}
 							alt={post.title}
-							className=" rounded-t-md"
+							className={
+								" rounded-t-md" + " " + (post.coverImage ? "" : " hidden")
+							}
 						/>
 						<CardTitle>{post.title}</CardTitle>
 						{/* <CardDescription>
