@@ -1,6 +1,6 @@
 ---
-title: Website WinterShow Flevoland
-excerpt: Welkom op de Website van WinterShow Flevoland.
+title: Wintershow Commissie Flevoland
+excerpt: De Wintershow Commissie Flevoland organiseert jaarlijks een rundveeshow waar melkveehouders uit de regio vol trots hun mooiste dieren showen.
 coverImage: /assets/site/header-picture.jpg
 date: 2024-12-We'T'14:00:00.000'+01:00'
 author:
@@ -9,8 +9,6 @@ author:
 ogImage:
   url: /assets/site/header-picture.jpg
 ---
-
-Welkom op de website van de Provinciale Wintershow Flevoland!
 
 De Wintershow Commissie Flevoland organiseert jaarlijks een rundveeshow waar melkveehouders uit de regio vol trots hun mooiste dieren showen. Naast het competitieve aspect is ons evenement ook een sociale gelegenheid. Hier ontmoeten veehouders, burgers en bedrijven uit de sector elkaar in een informele sfeer.
 
