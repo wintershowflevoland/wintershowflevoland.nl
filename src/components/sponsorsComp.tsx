@@ -1,5 +1,7 @@
 import { getAllSponsors } from "@/lib/api";
+import Link from "next/link";
 import SponsorCard from "./sponsorCard";
+import { Card } from "./ui/card";
 
 export default function SponsorsComp() {
 	const allSponsors = getAllSponsors();
@@ -17,11 +19,18 @@ export default function SponsorsComp() {
 						url={sponsor.siteUrl}
 					/>
 				))}
-				{/* <SponsorCard
-					img={"/assets/site/logo-icon.jpeg"}
-					title={"Static  Sponor"}
-					url={"https://google.com"}
-				/> */}
+				<Card
+					className="bg-card p-4 hover:underline hover:cursor-pointer flex"
+					// onClick={() => window.open("/sponsering", "_blank")}
+				>
+					<div className="m-auto">
+						<Link href="/sponsoring">
+							<h2 className="pt-2 text-center text-lg font-bold">
+								Word vrienden van de show!
+							</h2>
+						</Link>
+					</div>
+				</Card>
 			</div>
 		</div>
 	);
