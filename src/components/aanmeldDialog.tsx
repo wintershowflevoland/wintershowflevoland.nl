@@ -45,6 +45,7 @@ export function AanmeldDialog() {
 			if (eventState === "AanmeldDialog") {
 				setOpen(true);
 				document.body.style.overflowY = "hidden";
+				document.documentElement.style.overflowY = "hidden";
 			}
 		}
 	}, [eventState]);
@@ -53,6 +54,7 @@ export function AanmeldDialog() {
 		if (!open) {
 			// remove overflowY style form body
 			document.body.style.overflowY = "";
+			document.documentElement.style.overflowY = "";
 			triggerEvent("AanmeldDialogClosed");
 			setTimeout(() => {
 				triggerEvent("");
