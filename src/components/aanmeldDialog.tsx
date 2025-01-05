@@ -256,9 +256,13 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 		<form
 			ref={dialogFormRef}
 			className={cn(
-				"[&>div]:grid [&>div]:items-start [&>div]:gap-4 max-h-[80vh] px-4 overflow-y-scroll",
+				"[&>div]:grid [&>div]:items-start [&>div]:gap-4 max-h-[80dvh] px-4 overflow-y-scroll",
 				className
 			)}
+			onSubmit={(e) => e.preventDefault()}
+			onTouchCancel={(e) => e.preventDefault()}
+			onAbort={(e) => e.preventDefault()}
+			onPointerCancel={(e) => e.preventDefault()}
 		>
 			{openPageId == 0 && (
 				<div>
