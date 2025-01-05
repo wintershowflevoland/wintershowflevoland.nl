@@ -44,12 +44,15 @@ export function AanmeldDialog() {
 		if (eventState) {
 			if (eventState === "AanmeldDialog") {
 				setOpen(true);
+				document.body.style.overflowY = "hidden";
 			}
 		}
 	}, [eventState]);
 
 	React.useEffect(() => {
 		if (!open) {
+			// remove overflowY style form body
+			document.body.style.overflowY = "";
 			triggerEvent("AanmeldDialogClosed");
 			setTimeout(() => {
 				triggerEvent("");
@@ -258,7 +261,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 		<form
 			ref={dialogFormRef}
 			className={cn(
-				"[&>div]:grid [&>div]:items-start [&>div]:gap-4 max-h-[80dvh] px-4 overflow-y-scroll",
+				"[&>div]:grid [&>div]:items-start [&>div]:gap-4 max-h-[90dvh] px-4 pb-2 overflow-y-scroll",
 				className
 			)}
 			onSubmit={(e) => e.preventDefault()}

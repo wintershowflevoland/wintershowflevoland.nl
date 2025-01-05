@@ -42,7 +42,7 @@ export default function RootLayout({
 			>
 				<EventProvider>
 					{/* {children} */}
-					<div className=" flex flex-col w-full h-[100dvh]">
+					<div className=" flex flex-col w-full h-full">
 						<div className="fixed w-full z-40">
 							<NavBarComp />
 						</div>
