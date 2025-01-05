@@ -12,7 +12,6 @@ import {
 	Drawer,
 	DrawerClose,
 	DrawerContent,
-	DrawerFooter,
 	DrawerHeader,
 	DrawerTitle,
 } from "@/components/ui/drawer";
@@ -83,15 +82,18 @@ export function AanmeldDialog() {
 				<Button className="hover:underline">Aanmelden</Button>
 			</DrawerTrigger> */}
 			<DrawerContent className="">
-				<DrawerHeader className="text-left">
+				<DrawerHeader className="text-left flex items-center">
 					<DrawerTitle>Aanmelden</DrawerTitle>
+					<DrawerClose asChild className="ml-auto">
+						<Button variant="outline">Cancel</Button>
+					</DrawerClose>
 				</DrawerHeader>
 				<AanmeldForm />
-				<DrawerFooter className="pt-2">
+				{/* <DrawerFooter className="pt-2">
 					<DrawerClose asChild>
 						<Button variant="outline">Cancel</Button>
 					</DrawerClose>
-				</DrawerFooter>
+				</DrawerFooter> */}
 			</DrawerContent>
 		</Drawer>
 	);
