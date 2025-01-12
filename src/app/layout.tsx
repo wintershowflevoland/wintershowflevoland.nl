@@ -57,6 +57,12 @@ export default function RootLayout({
 					</div>
 				</EventProvider>
 			</body>
+			<script
+				async
+				defer
+				src="https://tianji.jcklerk.dev/tracker.js"
+				data-website-id="cm5u79b0s0005gzjeca8bhsia"
+			></script>
 		</html>
 	);
 }
