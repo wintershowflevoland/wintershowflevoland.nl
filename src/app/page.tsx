@@ -8,8 +8,7 @@ export default function Home() {
 		<div>
 			<NieuwsComp />
 			<BottomFotoRapperComp />
-			<br />
-			<br />
+
 			<SponsorsComp />
 		</div>
 		// <>
