@@ -36,7 +36,7 @@ content:
     type: collection
     path: _foto-album
     view:
-      fields: [title, url]
+      fields: [coverImage, title, url]
     fields:
       - { name: title, label: Title, type: string, required: true }
       - { name: url, label: Url, type: string, required: true }
@@ -52,7 +52,7 @@ content:
     type: collection
     path: _sponsors
     view:
-      fields: [title, url]
+      fields: [logo, name, siteUrl]
     fields:
       - { name: name, label: Title, type: string, required: true }
       - { name: siteUrl, label: Site Url, type: string, required: true }
