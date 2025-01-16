@@ -2,9 +2,9 @@
 	"private": true,
 	"scripts": {
 		"dev": "next",
-		"build": "next build",
+		"build": "next build && next-sitemap",
 		"start": "next start",
-  		"postbuild": "next-sitemap"
+		"postbuild": "next-sitemap"
 	},
 	"dependencies": {
 		"@radix-ui/react-checkbox": "^1.1.2",
