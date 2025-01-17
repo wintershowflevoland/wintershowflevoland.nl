@@ -66,6 +66,7 @@ content:
       - {
           name: imageColourBehaviour,
           label: image Colour Behaviour,
+          type: select,
           options:
             {
               values: { value: normal, label: Normaal (geen veranderingen) },
