@@ -63,3 +63,14 @@ content:
           type: date,
           options: { time: true, format: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" },
         }
+      - {
+          name: imageColourBehaviour,
+          label: image Colour Behaviour,
+          options:
+            {
+              values: { value: normal, label: Normaal (geen veranderingen) },
+              { value: invertedLight, label: Inverted Light Mode },
+              { value: invertedDark, label: Inverted Dark Mode },
+              { value: inverted, label: Inverted },
+            },
+        }
