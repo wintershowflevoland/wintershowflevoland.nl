@@ -69,9 +69,11 @@ content:
           type: select,
           options:
             {
-              values: { value: normal, label: Normaal (geen veranderingen) },
-              { value: invertedLight, label: Inverted Light Mode },
-              { value: invertedDark, label: Inverted Dark Mode },
-              { value: inverted, label: Inverted },
+              values: {
+                { value: normal, label: Normaal (geen veranderingen) },
+                { value: invertedLight, label: Inverted Light Mode },
+                { value: invertedDark, label: Inverted Dark Mode },
+                { value: inverted, label: Inverted },
+              }
             },
         }
