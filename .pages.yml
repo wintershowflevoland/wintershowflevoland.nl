@@ -67,4 +67,4 @@ content:
         label: image Colour Behaviour
         type: select
         options:
-          values: [Normal, InvertedLight, InvertedDark, inverted]
+          values: [Normal, InvertedLight, InvertedDark, Inverted]
