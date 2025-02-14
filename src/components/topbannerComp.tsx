@@ -39,7 +39,7 @@ export default function TopBannerComp() {
 					<div className="bg-card p-4">
 						<h1 className="text-lg sm:text-2xl font-bold">
 							Wintershow Flevoland <br /> Dinsdagavond 4 maart <br /> Aanvang
-							18:30 uur.
+							18:00 uur.
 						</h1>
 						<p className="text-sm">
 							De voorbereidingen voor de Wintershow Dronten zijn al in volle
