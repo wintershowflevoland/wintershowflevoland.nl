@@ -11,17 +11,17 @@ export default function TopBannerComp() {
 				alt=""
 			/>
 			<div className="absolute top-0 w-full z-10">
-				<div className="flex items-center p-4 w-fit mx-auto text-secondary mt-2 md:mt-10">
+				<div className="flex items-center p-4 w-fit mx-auto text-secondary mt-2 md:mt-10 gap-4">
 					<Link href="/">
 						<img
 							src="/assets/site/logo-icon-transparant.png"
 							alt="logo"
-							className="h-[60px] w-[60px] md:h-[90px] md:w-[90px]"
+							className="h-[60px] w-[60px] md:h-[100px] md:w-[100px]"
 						/>
 					</Link>
 					<Link
 						href="/"
-						className="hover:underline grow text-4xl md:text-5xl font-bold flex"
+						className="hover:underline grow text-4xl md:text-5xl font-bold flex text-white"
 					>
 						<h1>Wintershow Flevoland</h1>
 					</Link>
