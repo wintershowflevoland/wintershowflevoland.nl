@@ -75,7 +75,7 @@ export function NavBarComp({ small }: { small?: boolean }) {
 					>
 						<h1 className="">Wintershow Flevoland</h1>
 					</Link>
-					<LinksList className={small ? "flex" : "hidden md:flex"} />
+					<LinksList className={small ? "flex flex-wrap" : "hidden md:flex"} />
 					<NavigationMenu className={small ? "hidden" : "block md:hidden"}>
 						<NavigationMenuList>
 							<NavigationMenuItem>
