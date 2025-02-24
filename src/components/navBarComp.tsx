@@ -32,6 +32,9 @@ export function NavBarComp({ small }: { small?: boolean }) {
 				<Link href="/pinkenkeuring" className="hover:underline">
 					Pinken keuring
 				</Link>
+				<Link href="/catalogus" className="hover:underline">
+					Catalogus
+				</Link>
 				<Link href="/sponsoring" className="hover:underline">
 					Sponsoring
 				</Link>
