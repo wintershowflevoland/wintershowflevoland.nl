@@ -1,7 +1,12 @@
+import PDFViewer from "@/components/PDFViewer";
+
 export default function Uitslag() {
 	return (
 		<div className="m-auto text-center">
-			<b>Uitslagen van 2025 zijn nog niet bekend.</b>
+			<PDFViewer
+				pdfUrl="assets/Uitslag.pdf"
+				noResultsMessage="Uitslagen zijn nog niet bekend."
+			/>
 		</div>
 	);
 }
