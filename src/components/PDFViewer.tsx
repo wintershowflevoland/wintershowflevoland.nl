@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Button } from "./ui/button";
 import { Skeleton } from "./ui/skeleton";
 
 interface PDFViewerProps {
@@ -35,7 +36,17 @@ export default function PDFViewer({
 	if (pdfExists === null) return <Skeleton className="h-5 w-[250px]" />;
 
 	return pdfExists ? (
-		<iframe src={pdfUrl} className="w-full h-[90dvh]" />
+		<>
+			<embed
+				src={pdfUrl}
+				className="w-full max-w-[90dvh] h-[90dvh]"
+				type="application/pdf"
+			/>
+			<br />
+			<a href={pdfUrl} target="_blank">
+				<Button onClick={() => null}>View PDF</Button>
+			</a>
+		</>
 	) : (
 		<p className="h-5 w-[250px]">{noResultsMessage}</p>
 	);
