@@ -258,10 +258,10 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 
 	if (openSoon && openPageId !== 11) {
 		setOpenPageId(11);
-	} else {
-		if (new Date() > formClosedDate && openPageId !== 10) {
-			setOpenPageId(10);
-		}
+	}
+
+	if (new Date() > formClosedDate && !openSoon && openPageId !== 10) {
+		setOpenPageId(10);
 	}
 
 	return (
