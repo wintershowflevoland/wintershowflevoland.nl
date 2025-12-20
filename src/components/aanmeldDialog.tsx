@@ -107,6 +107,7 @@ export function AanmeldDialog() {
 function AanmeldForm({ className }: React.ComponentProps<"form">) {
 	// closed Date
 	const formClosedDate = new Date("2025-03-01T00:00:00Z");
+	const openSoon = true;
 	//2025-02-23T00:00:00Z
 	const dateOptions: Intl.DateTimeFormatOptions = {
 		day: "2-digit",
@@ -255,8 +256,12 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 		}
 	};
 
-	if (new Date() > formClosedDate && openPageId !== 10) {
-		setOpenPageId(10);
+	if (openSoon && openPageId !== 11) {
+		setOpenPageId(11);
+	} else {
+		if (new Date() > formClosedDate && openPageId !== 10) {
+			setOpenPageId(10);
+		}
 	}
 
 	return (
@@ -941,6 +946,29 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 							}}
 						>
 							Nalopen formulier
+						</Button>
+					</div>
+				</div>
+			)}
+
+			{openPageId == 11 && (
+				<div>
+					<div className="grid gap-2">
+						<Label htmlFor="name">Aanmeldingen nog niet open</Label>
+						<p>
+							De aanmeldingen voor de keuring zijn nog niet geopend. Binnen kort
+							kan u zich aan melden.
+						</p>
+					</div>
+					<div className="flex gap-4 w-full [&>button]:grow">
+						<Button
+							variant="secondary"
+							onClick={(e) => {
+								e.preventDefault();
+								window.location.reload();
+							}}
+						>
+							Sluiten
 						</Button>
 					</div>
 				</div>

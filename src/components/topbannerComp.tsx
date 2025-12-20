@@ -38,13 +38,13 @@ export default function TopBannerComp() {
 					</div>
 					<div className="bg-card p-4">
 						<h1 className="text-lg sm:text-2xl font-bold">
-							Wintershow Flevoland <br /> Dinsdagavond 4 maart <br /> Aanvang
-							18:00 uur.
+							Wintershow Flevoland <br /> Dinsdagavond 10 maart 2026 <br />{" "}
+							{/* Aanvang 18:00 uur. */}
 						</h1>
 						<p className="text-sm">
 							De voorbereidingen voor de Wintershow Dronten zijn al in volle
 							gang! Daarmee is de datum voor aankomend jaar bekend en kan je je
-							daar voor aanmelden.
+							daar voor binnen kort aanmelden.
 						</p>
 						{/* <br />
 						<AanmeldButton /> */}
