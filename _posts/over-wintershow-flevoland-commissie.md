@@ -16,4 +16,6 @@ De Provinciale Wintershow heeft een rijke traditie in Flevoland. Al meer dan 30 
 
 Naast de rundveeshow organiseren we ook jaarlijks een thema-avond met sprekers over actuele onderwerpen in de sector. Daarnaast valt de organisatie van de Champions League Veebeoordelen voor studieclubs onder ook onze verantwoordelijkheid.
 
-Kortom, we bieden een breed scala aan activiteiten. Dankzij ons bestuur, enthousiaste vrijwilligers en trouwe sponsors kunnen we dit allemaal realiseren. Als bestuur blijven we ons inzetten om Flevolandse boeren een podium te geven om hun mooiste dieren te showen. We mogen ondanks de roerige tijden in de melkveehouderij trots zijn op onze melkveehouders!
+Kortom, we bieden een breed scala aan activiteiten. Dankzij ons bestuur, enthousiaste vrijwilligers en trouwe sponsors kunnen we dit allemaal realiseren. Als bestuur blijven we ons inzetten om Flevolandse boeren een podium te geven om hun mooiste dieren te showen.
+
+Bestuur Wintershow Flevoland.

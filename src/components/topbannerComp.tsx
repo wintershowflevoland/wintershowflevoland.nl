@@ -16,12 +16,12 @@ export default function TopBannerComp() {
 						<img
 							src="/assets/site/logo-icon-transparant.png"
 							alt="logo"
-							className="h-[60px] w-[60px] md:h-[100px] md:w-[100px]"
+							className="h-[60px] w-[60px] md:h-[140px] md:w-[140px] drop-shadow-[0_8.6px_8.6px_rgba(0,0,0,0.8)]"
 						/>
 					</Link>
 					<Link
 						href="/"
-						className="hover:underline grow text-4xl md:text-5xl font-bold flex text-white"
+						className="hover:underline grow text-4xl md:text-5xl font-bold flex text-white drop-shadow-[0_8.6px_8.6px_rgba(0,0,0,0.8)]"
 					>
 						<h1>Wintershow Flevoland</h1>
 					</Link>
@@ -44,7 +44,7 @@ export default function TopBannerComp() {
 						<p className="text-sm">
 							De voorbereidingen voor de Wintershow Dronten zijn al in volle
 							gang! Daarmee is de datum voor aankomend jaar bekend en kan je je
-							daar voor binnen kort aanmelden.
+							daar voor aanmelden.
 						</p>
 						{/* <br />
 						<AanmeldButton /> */}

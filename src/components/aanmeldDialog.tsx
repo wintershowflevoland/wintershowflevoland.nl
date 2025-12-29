@@ -106,8 +106,8 @@ export function AanmeldDialog() {
 
 function AanmeldForm({ className }: React.ComponentProps<"form">) {
 	// closed Date
-	const formClosedDate = new Date("2025-03-01T00:00:00Z");
-	const openSoon = true;
+	const formClosedDate = new Date("2026-02-07T00:00:00Z");
+	const openSoon = false;
 	//2025-02-23T00:00:00Z
 	const dateOptions: Intl.DateTimeFormatOptions = {
 		day: "2-digit",
@@ -131,7 +131,6 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 		{
 			name: string;
 			number: string;
-			fatherName: string;
 			birth: string;
 			calf: string;
 			calved: string;
@@ -144,7 +143,6 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 	const [cowName, setCowName] = React.useState("");
 	const [cowBirth, setCowBirth] = React.useState("");
 	const [cowNumber, setCowNumber] = React.useState("");
-	const [cowFatherName, setCowFatherName] = React.useState("");
 	const [calfDate, setCalfDate] = React.useState("");
 	const [calvedCount, setCalvedCount] = React.useState("");
 	const [rundSoort, setRundSoort] = React.useState("");
@@ -156,6 +154,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 	const [termsGezondheidsDienst, setTermsGezondheidsDienst] =
 		React.useState(false);
 	const [termsCRV, setTermsCRV] = React.useState(false);
+	const [termsDAP, setTermsDAP] = React.useState(false);
 
 	const [openPageId, setOpenPageId] = React.useState(0);
 
@@ -188,8 +187,10 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 		// Loop through each cowItem using for...of (which works well with async/await)
 		for (const cowItem of cowList) {
 			try {
+				const macroId =
+					"AKfycbzXKn_n4DfuGYpinNzmMwDnl8ZqMrYjjJG99qPShoc7NZOwM4N21P0J2mhptNhCqR-U1g";
 				const response = await fetch(
-					"https://script.google.com/macros/s/AKfycbyGv2Isdufrx8x6BxQlan7iwoCdKlAFvBO3TW4rho8FmAREnZbT4uru9bTJrwLvjO2L6w/exec",
+					"https://script.google.com/macros/s/" + macroId + "/exec",
 					{
 						redirect: "follow",
 						method: "POST",
@@ -213,9 +214,9 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 								voorwaarden: voorwaarden ? "Ja" : "Nee",
 								termsGezondheidsDienst: termsGezondheidsDienst ? "Ja" : "Nee",
 								termsCRV: termsCRV ? "Ja" : "Nee",
+								termsDAP: termsDAP ? "Ja" : "Nee",
 								rundName: cowItem.name,
 								rundNumber: cowItem.number,
-								rundFatherName: cowItem.fatherName,
 								rundBirth: new Date(cowItem.birth).toLocaleDateString(
 									"nl-NL",
 									dateOptions
@@ -501,7 +502,6 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 							<div key={"ValuesName"} className="min-w-40 w-full font-semibold">
 								<p>Naam rund:</p>
 								<p>Levensnummer:</p>
-								<p>Naam vader:</p>
 								<p>Geboortedatum:</p>
 								<p>Kalfdatum:</p>
 								<p>Aantal kalvingen:</p>
@@ -512,7 +512,6 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 								<div key={index} className="min-w-40 w-full">
 									<p>{cow.name}</p>
 									<p>{cow.number}</p>
-									<p>{cow.fatherName}</p>
 									<p>{cow.birth}</p>
 									<p>{cow.calf}</p>
 									<p>{cow.calved}</p>
@@ -540,16 +539,6 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 							id="cowNumber"
 							value={cowNumber}
 							onChange={(e) => setCowNumber(e.target.value)}
-						/>
-					</div>
-					<div className="grid gap-2">
-						<Label htmlFor="name">Naam vader</Label>
-						<Input
-							type="text"
-							id="cowFatherName"
-							placeholder=""
-							value={cowFatherName}
-							onChange={(e) => setCowFatherName(e.target.value)}
 						/>
 					</div>
 					<div className="grid gap-2">
@@ -630,7 +619,6 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 							disabled={
 								cowName == "" ||
 								cowNumber == "" ||
-								cowFatherName == "" ||
 								cowBirth == "" ||
 								calfDate == "" ||
 								calvedCount == "" ||
@@ -645,7 +633,6 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 									{
 										name: cowName,
 										number: cowNumber,
-										fatherName: cowFatherName,
 										birth: cowBirth,
 										calf: calfDate,
 										calved: calvedCount,
@@ -656,7 +643,6 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 								]);
 								setCowName("");
 								setCowNumber("");
-								setCowFatherName("");
 								setCowBirth("");
 								setCalfDate("");
 								setCalvedCount("");
@@ -709,6 +695,17 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 					<div className="grid grid-cols-1 gap-2">
 						<div>
 							<b>Algemene voorwaarden keuring *</b>
+							<p>
+								* Deelname is toegestaan als u als deelnemer een Flevolands
+								melkveebedrijf heeft. Koeien buiten Flevoland toegestaand als u
+								lid bent van een Flevolandse studie club en/of u leerling bent
+								van Aeres MBO of HBO. Meerdere dieren mogen opgegeven worden
+								maar dienen wel door de inzender begeleid te worden.{" "}
+							</p>
+							<p>
+								* De Wintershow Flevoland is bij de GD aangemeld als IBR
+								veilige, BVD veilige en para TBC veilige keuring.{" "}
+							</p>
 							<p>
 								* Het is mogelijk om met een bedrijfsgroep mee te doen,
 								bestaande uit drie dieren.{" "}
@@ -764,7 +761,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 							</p>
 							<p>
 								* Zorg dat u tijdig met uw koeien aanwezig bent. De dieren
-								kunnen vanaf 15.00 uur worden aangevoerd.
+								kunnen vanaf 14.00 uur worden aangevoerd.
 							</p>
 							<p>
 								{" "}
@@ -851,6 +848,30 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 							</label>
 						</div>
 					</div>
+					<div className="grid grid-cols-1 gap-2">
+						<div>
+							<b>Toestemming delen gegevens DAP *</b>
+							<p>
+								Ondergetekende geeft het bestuur recht om de resultaten van de
+								bloed onderzoekken van het opgegeven dier rechtstreeks van de
+								dieren praktijk te ontvangen.
+							</p>
+						</div>
+						<div className="flex items-center space-x-2">
+							<Checkbox
+								required={true}
+								id="terms-DAP"
+								checked={termsDAP}
+								onCheckedChange={(e) => setTermsDAP(e as boolean)}
+							/>
+							<label
+								htmlFor="terms-DAP"
+								className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+							>
+								Akkoord
+							</label>
+						</div>
+					</div>
 					<div className="flex gap-4 w-full [&>button]:grow">
 						<Button
 							variant="secondary"
@@ -862,7 +883,12 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 							Vorige
 						</Button>
 						<Button
-							disabled={!voorwaarden || !termsCRV || !termsGezondheidsDienst}
+							disabled={
+								!voorwaarden ||
+								!termsCRV ||
+								!termsGezondheidsDienst ||
+								!termsDAP
+							}
 							onClick={(e) => {
 								e.preventDefault();
 								console.log({
@@ -882,6 +908,7 @@ function AanmeldForm({ className }: React.ComponentProps<"form">) {
 									voorwaarden: voorwaarden,
 									termsGezondheidsDienst: termsGezondheidsDienst,
 									termsCRV: termsCRV,
+									termsDAP: termsDAP,
 								});
 								postDataToSheet();
 							}}

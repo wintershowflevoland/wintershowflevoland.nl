@@ -2,7 +2,7 @@ export default function Sponsoring() {
 	return (
 		<div>
 			<p>
-				Op <strong>dinsdagavond 4 maart 2025</strong> zal de 33ste provinciale
+				Op <strong>dinsdagavond 10 maart 2026</strong> zal de 34ste provinciale
 				wintershow
 			</p>
 			<p>

@@ -9,6 +9,7 @@ author:
   name: WintershowFlevoland
   picture: /assets/site/logo-icon.jpeg
 ---
+
 7 januari vind er weer een nieuwe informatie avond plaats. Dit keer op de schoolboerderij van Dronten! Deze avond zal Marijn vanuit Denkavit uitleg geven hoe je de optimale groei van kalf tot pink krijgt en hoe je het beste je pink kunt voeren voor de keurig.
 
 Aanvang 20.00
