@@ -1,6 +1,6 @@
 ---
-title: Save the date 12 Januari 2026
-excerpt: Save the date voor de Showmanship en Scheercursus avond op 12 Januari 2026.
+title: Save the date 13 Januari 2026
+excerpt: Save the date voor de Showmanship en Scheercursus avond op 13 Januari 2026.
 coverImage: /assets/blog/showmanship-and-clipping-avond..jpg
 date: 2025-12-28T14:00:00.000'+01:00'
 author:
